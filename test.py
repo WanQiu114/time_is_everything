@@ -48,7 +48,7 @@ def get_chrome_tab_title():
         return "Unknown Chrome Tab"
 
 def get_firefox_tab_title():
-    return "Simulated Firefox Tab"
+    return "Firefox Tab"
 
 def detect_browser_title(process_name):
     if 'chrome' in process_name.lower():
