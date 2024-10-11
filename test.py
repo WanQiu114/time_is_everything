@@ -48,7 +48,6 @@ def get_chrome_tab_title():
         return "Unknown Chrome Tab"
 
 def get_firefox_tab_title():
-    # Simulated return for Firefox; replace with actual MozRepl integration if needed
     return "Simulated Firefox Tab"
 
 def detect_browser_title(process_name):
@@ -84,25 +83,25 @@ def monitor_fullscreen_apps():
             
             if app_title != current_app:
                 if current_app:
-                    # End time for the previous app
+    
                     end_time = datetime.now()
-                    # Calculate the total time spent
+                    
                     total_duration = accumulated_time + (end_time - start_time)
                     print(f"{current_app} ran for {total_duration} time.")
                     activity_log.append((current_app, start_time, end_time, total_duration))
 
-                # Start tracking the new application
+                
                 current_app = app_title
                 start_time = datetime.now()
                 accumulated_time = timedelta()  # Reset accumulated time for new app
                 print(f"Current application: {current_app}, started at: {start_time}")
             else:
-                # If the same app is still running, keep accumulating time
-                accumulated_time += timedelta(seconds=5)  # Increment accumulated time
+                
+                accumulated_time += timedelta(seconds=5)  
 
         time.sleep(5)
 
-# Register the upload function to run on exit
+
 atexit.register(upload_to_google_calendar)
 
 if __name__ == "__main__":
